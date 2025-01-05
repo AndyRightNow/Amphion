@@ -47,7 +47,8 @@ def build_semantic_model(device):
     semantic_model = Wav2Vec2BertModel.from_pretrained("facebook/w2v-bert-2.0")
     semantic_model.eval()
     semantic_model.to(device)
-    stat_mean_var = torch.load("./models/tts/maskgct/ckpt/wav2vec2bert_stats.pt")
+    stat_mean_var = torch.load(
+        "./models/tts/maskgct/ckpt/wav2vec2bert_stats.pt")
     semantic_mean = stat_mean_var["mean"]
     semantic_std = torch.sqrt(stat_mean_var["var"])
     semantic_mean = semantic_mean.to(device)
@@ -102,7 +103,8 @@ class MaskGCT_Inference_Pipeline:
 
     @torch.no_grad()
     def extract_features(self, speech):
-        inputs = self.processor(speech, sampling_rate=16000, return_tensors="pt")
+        inputs = self.processor(
+            speech, sampling_rate=16000, return_tensors="pt")
         input_features = inputs["input_features"][0]
         attention_mask = inputs["attention_mask"][0]
         return input_features, attention_mask
@@ -115,7 +117,8 @@ class MaskGCT_Inference_Pipeline:
             output_hidden_states=True,
         )
         feat = vq_emb.hidden_states[17]  # (B, T, C)
-        feat = (feat - self.semantic_mean.to(feat)) / self.semantic_std.to(feat)
+        feat = (feat - self.semantic_mean.to(feat)) / \
+            self.semantic_std.to(feat)
 
         semantic_code, rec_feat = self.semantic_codec.quantize(feat)  # (B, T)
         return semantic_code, rec_feat
@@ -164,7 +167,8 @@ class MaskGCT_Inference_Pipeline:
         input_features, attention_mask = self.extract_features(prompt_speech)
         input_features = input_features.unsqueeze(0).to(self.device)
         attention_mask = attention_mask.unsqueeze(0).to(self.device)
-        semantic_code, _ = self.extract_semantic_code(input_features, attention_mask)
+        semantic_code, _ = self.extract_semantic_code(
+            input_features, attention_mask)
 
         predict_semantic = self.t2s_model.reverse_diffusion(
             semantic_code[:, :],
@@ -227,12 +231,11 @@ class MaskGCT_Inference_Pipeline:
         prompt_vq_emb = self.codec_decoder.vq2emb(
             prompt.permute(2, 0, 1), n_quantizers=12
         )
-        recovered_prompt_audio = self.codec_decoder(prompt_vq_emb)
-        recovered_prompt_audio = recovered_prompt_audio[0][0].cpu().numpy()
         recovered_audio = recovered_audio[0][0].cpu().numpy()
-        combine_audio = np.concatenate([recovered_prompt_audio, recovered_audio])
+        combine_audio = np.concatenate(
+            [recovered_prompt_audio, recovered_audio])
 
-        return combine_audio, recovered_audio
+        return recovered_audio
 
     def maskgct_inference(
         self,
@@ -266,12 +269,11 @@ class MaskGCT_Inference_Pipeline:
         acoustic_code = self.extract_acoustic_code(
             torch.tensor(speech).unsqueeze(0).to(self.device)
         )
-        _, recovered_audio = self.semantic2acoustic(
+
+        return self.semantic2acoustic(
             combine_semantic_code,
             acoustic_code,
             n_timesteps=n_timesteps_s2a,
             cfg=cfg_s2a,
             rescale_cfg=rescale_cfg_s2a,
         )
-
-        return recovered_audio
