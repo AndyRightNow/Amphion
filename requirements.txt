@@ -19,6 +19,7 @@ pyopenjtalk
 pykakasi
 
 json5
+soundfile
 black==24.1.1
 ruamel.yaml
 tqdm
