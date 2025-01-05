@@ -1,7 +1,3 @@
-[build-system]
-requires = ["setuptools", "setuptools-scm"]
-build-backend = "setuptools.build_meta"
-
 [project]
 name = "amphion"
 description = "Amphion"
@@ -15,6 +11,7 @@ classifiers = [
 ]
 
 dependencies = [
+  "setuptools",
   "natsort ~= 8.2.0",
   "rich ~= 12.6.0",
   "onnxruntime",
