@@ -2,8 +2,12 @@
 name = "amphion"
 description = "Amphion"
 license = { text = "MIT License" }
-requires-python = ">= 3.10"
-version = "1.0.3"
+requires-python = ">=3.10"
+version = "1.0.4"
+authors = [{ name = "AndyRightNow", email = "test@test.com" }]
+readme = "README.md"
+keywords = ["TTS", "Speech"]
+classifiers = ["Programming Language :: Python :: 3"]
 
 dependencies = [
   "setuptools",
