@@ -5,9 +5,6 @@ license = { text = "MIT License" }
 requires-python = ">= 3.10"
 version = "1.0.1"
 
-[tool.setuptools.packages.find]
-where = ["."]
-
 dependencies = [
   "setuptools",
   "natsort ~= 8.2.0",
@@ -38,3 +35,13 @@ dependencies = [
   "gradio",
   "openai-whisper",
 ]
+
+
+[build-system]
+requires = ["setuptools"]
+
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["*"]
+namespaces = false
