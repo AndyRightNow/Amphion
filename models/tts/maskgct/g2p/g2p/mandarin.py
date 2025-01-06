@@ -20,7 +20,7 @@ import os
 BLANK_LEVEL = 0
 
 # conv = G2PWConverter(style='pinyin', enable_non_tradional_chinese=True)
-resource_path = Path('../').absolute()
+resource_path = Path('../').resolve()
 
 poly_all_class_path = os.path.join(
     resource_path, "sources", "g2p_chinese_model", "polychar.txt"
