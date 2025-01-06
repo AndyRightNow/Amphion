@@ -14,7 +14,7 @@ from torch.nn import functional as F
 
 from torch.nn.utils.rnn import pad_sequence
 from utils.data_utils import *
-from models.codec.codec_dataset import CodecDataset
+from amphion_local.models.codec.codec_dataset import CodecDataset
 
 
 class FAcodecDataset(torch.utils.data.Dataset):

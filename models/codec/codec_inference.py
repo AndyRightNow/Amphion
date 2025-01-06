@@ -19,20 +19,20 @@ from glob import glob
 from accelerate.logging import get_logger
 from torch.utils.data import DataLoader
 
-from models.vocoders.vocoder_dataset import (
+from amphion_local.models.vocoders.vocoder_dataset import (
     VocoderDataset,
     VocoderCollator,
     VocoderConcatDataset,
 )
 
-from models.vocoders.gan.generator import bigvgan, hifigan, melgan, nsfhifigan, apnet
-from models.vocoders.flow.waveglow import waveglow
-from models.vocoders.diffusion.diffwave import diffwave
-from models.vocoders.autoregressive.wavenet import wavenet
-from models.vocoders.autoregressive.wavernn import wavernn
+from amphion_local.models.vocoders.gan.generator import bigvgan, hifigan, melgan, nsfhifigan, apnet
+from amphion_local.models.vocoders.flow.waveglow import waveglow
+from amphion_local.models.vocoders.diffusion.diffwave import diffwave
+from amphion_local.models.vocoders.autoregressive.wavenet import wavenet
+from amphion_local.models.vocoders.autoregressive.wavernn import wavernn
 
-from models.vocoders.gan import gan_vocoder_inference
-from models.vocoders.diffusion import diffusion_vocoder_inference
+from amphion_local.models.vocoders.gan import gan_vocoder_inference
+from amphion_local.models.vocoders.diffusion import diffusion_vocoder_inference
 
 from utils.io import save_audio
 

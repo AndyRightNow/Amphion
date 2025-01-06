@@ -9,8 +9,8 @@ import cn2an
 from pypinyin import lazy_pinyin, BOPOMOFO
 from pathlib import Path
 from typing import List
-from models.tts.maskgct.g2p.g2p.chinese_model_g2p import BertPolyPredict
-from models.tts.maskgct.g2p.utils.front_utils import *
+from amphion_local.models.tts.maskgct.g2p.g2p.chinese_model_g2p import BertPolyPredict
+from amphion_local.models.tts.maskgct.g2p.utils.front_utils import *
 import os
 
 # from g2pw import G2PWConverter
