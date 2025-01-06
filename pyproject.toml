@@ -41,7 +41,5 @@ dependencies = [
 requires = ["setuptools"]
 
 
-[tool.setuptools.packages.find]
-where = ["."]
-include = ["*"]
-namespaces = false
+[tool.setuptools]
+packages = ["models", "utils"]
