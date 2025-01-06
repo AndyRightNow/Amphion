@@ -3,7 +3,7 @@ name = "amphion"
 description = "Amphion"
 license = { text = "MIT License" }
 requires-python = ">=3.10"
-version = "1.0.6"
+version = "1.0.7"
 authors = [{ name = "AndyRightNow", email = "test@test.com" }]
 readme = "README.md"
 keywords = ["TTS", "Speech"]
@@ -45,6 +45,9 @@ dependencies = [
 requires = ["setuptools", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
+
+[tool.setuptools.package-dir]
+amphion = "."
 
 [tool.setuptools]
 packages = ["amphion.models", "amphion.utils"]
