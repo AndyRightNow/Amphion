@@ -7,6 +7,7 @@ import re
 import jieba
 import cn2an
 from pypinyin import lazy_pinyin, BOPOMOFO
+from pathlib import Path
 from typing import List
 from models.tts.maskgct.g2p.g2p.chinese_model_g2p import BertPolyPredict
 from models.tts.maskgct.g2p.utils.front_utils import *
@@ -19,7 +20,8 @@ import os
 BLANK_LEVEL = 0
 
 # conv = G2PWConverter(style='pinyin', enable_non_tradional_chinese=True)
-resource_path = r"./models/tts/maskgct/g2p"
+resource_path = Path('../').absolute()
+
 poly_all_class_path = os.path.join(
     resource_path, "sources", "g2p_chinese_model", "polychar.txt"
 )
