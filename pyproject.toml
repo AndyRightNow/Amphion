@@ -3,7 +3,7 @@ name = "amphion"
 description = "Amphion"
 license = { text = "MIT License" }
 requires-python = ">= 3.10"
-version = "1.0.2"
+version = "1.0.3"
 
 dependencies = [
   "setuptools",
@@ -38,7 +38,8 @@ dependencies = [
 
 
 [build-system]
-requires = ["setuptools"]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
 
 
 [tool.setuptools]
