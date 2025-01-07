@@ -11,8 +11,8 @@ import torch.nn as nn
 from torch.nn import functional as F
 from einops import rearrange, repeat
 
-from amphion_local.models.codec.amphion_codec.quantize import ResidualVQ
-from amphion_local.models.codec.kmeans.vocos import VocosBackbone
+from models.codec.amphion_codec.quantize import ResidualVQ
+from models.codec.kmeans.vocos import VocosBackbone
 
 
 def init_weights(m):
