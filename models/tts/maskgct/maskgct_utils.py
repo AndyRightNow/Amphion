@@ -232,8 +232,6 @@ class MaskGCT_Inference_Pipeline:
             prompt.permute(2, 0, 1), n_quantizers=12
         )
         recovered_audio = recovered_audio[0][0].cpu().numpy()
-        combine_audio = np.concatenate(
-            [recovered_prompt_audio, recovered_audio])
 
         return recovered_audio
 
