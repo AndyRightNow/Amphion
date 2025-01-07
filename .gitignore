@@ -41,11 +41,9 @@ ckpts
 
 # Data and ckpt
 *.pkl
-*.pt
 *.npy
 *.npz
 *.tar.gz
-*.ckpt
 *.wav
 *.flac
 pretrained/wenet/*conformer_exp
