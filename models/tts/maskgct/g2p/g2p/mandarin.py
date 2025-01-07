@@ -20,7 +20,8 @@ import os
 BLANK_LEVEL = 0
 
 # conv = G2PWConverter(style='pinyin', enable_non_tradional_chinese=True)
-resource_path = Path('../').resolve()
+resource_path = Path(os.path.dirname(
+    os.path.realpath(__file__)), '../').resolve()
 
 poly_all_class_path = os.path.join(
     resource_path, "sources", "g2p_chinese_model", "polychar.txt"
@@ -35,7 +36,8 @@ if not os.path.exists(poly_all_class_path):
 poly_dict = generate_poly_lexicon(poly_all_class_path)
 
 # Set up G2PW model parameters
-g2pw_poly_model_path = os.path.join(resource_path, "sources", "g2p_chinese_model")
+g2pw_poly_model_path = os.path.join(
+    resource_path, "sources", "g2p_chinese_model")
 if not os.path.exists(g2pw_poly_model_path):
     print(
         "Incorrect path for g2pw polyphonic character model: {}, please check...".format(
